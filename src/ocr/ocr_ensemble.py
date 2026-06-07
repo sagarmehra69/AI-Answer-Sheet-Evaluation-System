@@ -299,7 +299,15 @@ if __name__ == "__main__":
     )
 
     print("\n── SUMMARY ─────────────────────────────────────")
-    print(f"  Images processed : {len(results_df)}")
-    print(f"  Exact match acc  : {results_df['is_correct'].mean()*100:.2f}%")
-    print(f"  Avg CER          : {results_df['cer'].mean():.4f}")
-    print(f"  Results saved    : {args.output}")
+    
+    # ✅ Fixed
+    if len(results_df) == 0:
+      print("  ⚠️  No images were processed. Check your paths below.")
+    elif "is_correct" in results_df.columns and results_df["is_correct"].notna().any():
+      print(f"  Exact match acc  : {results_df['is_correct'].mean()*100:.2f}%")
+      print(f"  Avg CER          : {results_df['cer'].mean():.4f}")
+    else:
+      print("  ⚠️  No ground truth comparisons made.")
+    
+      print(f"  Images processed : {len(results_df)}")
+      print(f"  Results saved    : {args.output}")
