@@ -15,7 +15,6 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 @dataclass
 class OCRResult:
@@ -55,6 +54,7 @@ class TesseractEngine:
             lang           : OCR language (default: English)
             tesseract_cmd  : path to tesseract binary (if not in PATH)
         """
+        pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
         if tesseract_cmd:
             pytesseract.pytesseract.tesseract_cmd = tesseract_cmd
 
