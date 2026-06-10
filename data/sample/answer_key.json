@@ -1,0 +1,58 @@
+
+{
+  "Q1": {
+    "question": "What is Artificial Intelligence?",
+    "model_answer": "Artificial Intelligence is a branch of computer science that enables machines to perform tasks that normally require human intelligence such as learning, reasoning, and decision making.",
+    "keywords": [
+      "Artificial Intelligence",
+      "AI",
+      "human intelligence",
+      "learning",
+      "decision making",
+      "algorithms"
+    ],
+    "max_marks": 10
+  },
+
+  "Q2": {
+    "question": "Explain Machine Learning and its types.",
+    "model_answer": "Machine Learning is a subset of Artificial Intelligence that allows computers to learn patterns from data without explicit programming. The main types are supervised learning, unsupervised learning, and reinforcement learning.",
+    "keywords": [
+      "Machine Learning",
+      "supervised learning",
+      "unsupervised learning",
+      "reinforcement learning",
+      "data",
+      "patterns"
+    ],
+    "max_marks": 10
+  },
+
+  "Q3": {
+    "question": "What is OCR and why is it important?",
+    "model_answer": "Optical Character Recognition is a technology that converts printed or handwritten text from images into machine-readable text. OCR is important because it automates document digitization and reduces manual data entry.",
+    "keywords": [
+      "OCR",
+      "Optical Character Recognition",
+      "handwritten text",
+      "digitization",
+      "machine-readable text",
+      "document processing"
+    ],
+    "max_marks": 10
+  },
+
+  "Q4": {
+    "question": "Explain the working of an AI-powered Answer Sheet Evaluation System.",
+    "model_answer": "An AI-powered Answer Sheet Evaluation System works by scanning answer sheets, preprocessing images, extracting text using OCR, and evaluating answers using Natural Language Processing and semantic similarity techniques. The system then generates scores automatically.",
+    "keywords": [
+      "OCR",
+      "preprocessing",
+      "semantic similarity",
+      "Natural Language Processing",
+      "score generation",
+      "answer evaluation"
+    ],
+    "max_marks": 10
+  }
+}
