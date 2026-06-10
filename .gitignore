@@ -16,3 +16,15 @@ mlruns/
 *.egg-info/
 dist/
 .pytest_cache/
+# Virtual environment - NEVER push this
+.venv/
+venv/
+env/
+
+# Large model files
+*.pyd
+*.dll
+*.pth
+*.bin
+*.pt
+*.h5
