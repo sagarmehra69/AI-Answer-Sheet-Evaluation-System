@@ -7,27 +7,25 @@ class ImageCleaner:
 
     def clean_image(self, image_path, output_path):
 
-        # Read image
         image = cv2.imread(image_path)
 
         if image is None:
             raise ValueError(f"Unable to read image: {image_path}")
 
-        # Resize image
-        image = cv2.resize(image, None, fx=2, fy=2)
+        # Upscale
+        image = cv2.resize(image, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
 
-        # Convert to grayscale
+        # Gray
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        # Gaussian blur
-        blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+        # Noise removal
+        denoised = cv2.fastNlMeansDenoising(gray, None, 10, 7, 21)
 
-        # Thresholding
-        processed = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[
-            1
-        ]
+        # Adaptive threshold
+        processed = cv2.adaptiveThreshold(
+            denoised, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2
+        )
 
-        # Save processed image
         cv2.imwrite(output_path, processed)
 
         return output_path
