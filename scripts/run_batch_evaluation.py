@@ -18,6 +18,8 @@ from src.evaluation.answer_key_manager import AnswerKeyManager
 from src.evaluation.pass1_evaluator import Pass1Evaluator
 from src.evaluation.pass2_evaluator import Pass2Evaluator
 from src.evaluation.conflict_resolver import ConflictResolver
+from src.reports.excel_generator import ExcelGenerator
+from src.reports.pdf_generator import PDFGenerator
 
 # ----------------------------------
 # OCR IMPORTS SECOND
@@ -147,7 +149,23 @@ for question_id, student_answer in questions.items():
     print("\nCONFLICT RESOLUTION")
     print(final_result)
 
-print("\n===== EVALUATION COMPLETED =====")
 
 print("\n===== SAVED RESULTS =====\n")
 print(evaluation_results)
+
+excel_generator = ExcelGenerator()
+pdf_generator = PDFGenerator()
+
+print("\n===== EVALUATION COMPLETED =====")
+
+excel_generator.generate_report(
+    evaluation_results,
+    "export_results/evaluation_report.xlsx"
+)
+
+pdf_generator.generate_report(
+    evaluation_results,
+    "export_results/evaluation_report.pdf"
+)
+
+print("\n===== REPORTS GENERATED =====")
