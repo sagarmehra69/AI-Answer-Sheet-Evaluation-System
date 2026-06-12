@@ -5,22 +5,24 @@ sys.path.append(os.path.abspath("."))
 
 from src.ocr.paddle_engine import PaddleOCREngine
 from src.ocr.tesseract_engine import TesseractEngine
+from src.ocr.trocr_engine import TrOCREngine
 
-
-image_path = "data/processed/processed_student_001.jpg"
+IMAGE_PATH = "data/processed/processed_student_001.jpg"
 
 print("\n===== PADDLE OCR =====\n")
 
 paddle = PaddleOCREngine()
 
-paddle_text = paddle.extract_text(image_path)
-
-print(paddle_text)
+print(paddle.extract_text(IMAGE_PATH))
 
 print("\n===== TESSERACT OCR =====\n")
 
 tesseract = TesseractEngine()
 
-tesseract_text = tesseract.extract_text(image_path)
+print(tesseract.extract_text(IMAGE_PATH))
 
-print(tesseract_text)
+print("\n===== TrOCR =====\n")
+
+trocr = TrOCREngine()
+
+print(trocr.extract_text(IMAGE_PATH))

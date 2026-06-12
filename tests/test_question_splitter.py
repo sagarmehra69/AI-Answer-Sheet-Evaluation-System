@@ -3,26 +3,21 @@ import os
 
 sys.path.append(os.path.abspath("."))
 
-from src.ocr.paddle_engine import PaddleOCREngine
 from src.utils.question_splitter import QuestionSplitter
 
+text = """
+Q1 What is Artificial Intelligence?
+Artificial Intelligence is a branch of computer science.
 
-ocr_engine = PaddleOCREngine()
+Q2 What is Machine Learning?
+Machine Learning is a subset of AI.
+
+Q3 What is OCR?
+OCR converts images into text.
+"""
+
 splitter = QuestionSplitter()
 
-image_path = "data/processed/processed_student_001.jpg"
-
-# OCR extraction
-text = ocr_engine.extract_text(image_path)
-
-print("\n===== RAW OCR TEXT =====\n")
-print(text)
-
-print("\n========================\n")
-
-# Split questions
 questions = splitter.split_questions(text)
-
-print("\n===== SPLIT QUESTIONS =====\n")
 
 print(questions)

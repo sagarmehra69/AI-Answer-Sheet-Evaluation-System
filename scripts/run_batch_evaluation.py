@@ -93,6 +93,8 @@ print(questions)
 
 print("\n===== FINAL EVALUATION =====\n")
 
+evaluation_results = {}
+
 for question_id, student_answer in questions.items():
     answer_data = answer_manager.get_answer(question_id)
 
@@ -119,6 +121,16 @@ for question_id, student_answer in questions.items():
     final_result = conflict_resolver.resolve(pass1_result, pass2_result)
 
     # -------------------------
+    # STORE RESULTS
+    # -------------------------
+
+    evaluation_results[question_id] = {
+        "pass1_result": pass1_result,
+        "pass2_result": pass2_result,
+        "conflict_result": final_result,
+    }
+
+    # -------------------------
     # OUTPUT
     # -------------------------
 
@@ -136,3 +148,6 @@ for question_id, student_answer in questions.items():
     print(final_result)
 
 print("\n===== EVALUATION COMPLETED =====")
+
+print("\n===== SAVED RESULTS =====\n")
+print(evaluation_results)

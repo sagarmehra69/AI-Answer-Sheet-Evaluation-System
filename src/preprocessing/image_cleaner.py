@@ -12,18 +12,18 @@ class ImageCleaner:
         if image is None:
             raise ValueError(f"Unable to read image: {image_path}")
 
-        # Upscale
+        # upscale
         image = cv2.resize(image, None, fx=3, fy=3, interpolation=cv2.INTER_CUBIC)
 
-        # Gray
+        # grayscale
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-        # Noise removal
-        denoised = cv2.fastNlMeansDenoising(gray, None, 10, 7, 21)
+        # denoise
+        gray = cv2.fastNlMeansDenoising(gray)
 
-        # Adaptive threshold
+        # adaptive threshold
         processed = cv2.adaptiveThreshold(
-            denoised, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2
+            gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 31, 15
         )
 
         cv2.imwrite(output_path, processed)
