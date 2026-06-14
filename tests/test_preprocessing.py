@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.abspath("."))
 
-from src.preprocessing.image_cleaner import ImageCleaner
+from src.preprocessing.image_cleaner_old import ImageCleaner
 
 
 cleaner = ImageCleaner()

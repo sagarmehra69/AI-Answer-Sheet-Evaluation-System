@@ -26,7 +26,7 @@ from src.reports.pdf_generator import PDFGenerator
 # OCR IMPORTS SECOND
 # ----------------------------------
 
-from src.preprocessing.image_cleaner import ImageCleaner
+from src.preprocessing.image_cleaner_old import ImageCleaner
 from src.ocr.paddle_engine import PaddleOCREngine
 from src.utils.question_splitter import QuestionSplitter
 
