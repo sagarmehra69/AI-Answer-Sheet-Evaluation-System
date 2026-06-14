@@ -25,9 +25,12 @@ class Pass1Evaluator:
         )
 
         # Hybrid score
-        final_score = (semantic_similarity * 0.7) + (keyword_score * 0.3)
+        final_score = (semantic_similarity * 0.85) + (keyword_score * 0.15)
 
         obtained_marks = round(final_score * max_marks, 2)
+
+        if semantic_similarity >= 0.80:
+            final_score = max(final_score, 0.80)
 
         return {
             "semantic_similarity": semantic_similarity,

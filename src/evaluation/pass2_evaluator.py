@@ -29,10 +29,12 @@ class Pass2Evaluator:
         rubric_score = rubric_result["coverage_score"]
 
         # Pass-2 Hybrid Formula
-        final_score = semantic_similarity * 0.6 + rubric_score * 0.4
+        final_score = semantic_similarity * 0.8 + rubric_score * 0.2
 
         marks = round(final_score * max_marks, 2)
 
+        if semantic_similarity >= 0.80:
+            final_score = max(final_score, 0.80)
         return {
             "semantic_similarity": semantic_similarity,
             "rubric_score": rubric_score,

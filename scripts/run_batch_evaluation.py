@@ -14,6 +14,7 @@ sys.path.insert(0, ROOT_DIR)
 # (Avoid Paddle/Torch DLL conflict)
 # ----------------------------------
 
+from src.database.crud import save_result
 from src.evaluation.answer_key_manager import AnswerKeyManager
 from src.evaluation.pass1_evaluator import Pass1Evaluator
 from src.evaluation.pass2_evaluator import Pass2Evaluator
@@ -75,6 +76,13 @@ print("Image processed successfully")
 
 print("\n===== OCR EXTRACTION =====\n")
 
+# ocr_text = """
+# Q1 Artificial Intelligence is a branch of computer science.
+# Q2 Machine Learning is a subset of AI.
+# Q3 OCR converts images into text.
+# """
+
+
 ocr_text = ocr_engine.extract_text(PROCESSED_IMAGE)
 
 print(ocr_text)
@@ -132,6 +140,12 @@ for question_id, student_answer in questions.items():
         "conflict_result": final_result,
     }
 
+    save_result(
+        question_id,
+        pass1_result["marks"],
+        pass2_result["marks"],
+        final_result["final_marks"],
+    )
     # -------------------------
     # OUTPUT
     # -------------------------
@@ -159,13 +173,11 @@ pdf_generator = PDFGenerator()
 print("\n===== EVALUATION COMPLETED =====")
 
 excel_generator.generate_report(
-    evaluation_results,
-    "export_results/evaluation_report.xlsx"
+    evaluation_results, "export_results/evaluation_report.xlsx"
 )
 
 pdf_generator.generate_report(
-    evaluation_results,
-    "export_results/evaluation_report.pdf"
+    evaluation_results, "export_results/evaluation_report.pdf"
 )
 
 print("\n===== REPORTS GENERATED =====")

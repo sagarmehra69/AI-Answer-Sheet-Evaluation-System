@@ -5,11 +5,8 @@
     "model_answer": "Artificial Intelligence is a branch of computer science that enables machines to perform tasks that normally require human intelligence such as learning, reasoning, and decision making.",
     "keywords": [
       "Artificial Intelligence",
-      "AI",
       "human intelligence",
-      "learning",
-      "decision making",
-      "algorithms"
+      "computer science"
     ],
     "max_marks": 10
   },
@@ -19,11 +16,9 @@
     "model_answer": "Machine Learning is a subset of Artificial Intelligence that allows computers to learn patterns from data without explicit programming. The main types are supervised learning, unsupervised learning, and reinforcement learning.",
     "keywords": [
       "Machine Learning",
-      "supervised learning",
-      "unsupervised learning",
-      "reinforcement learning",
-      "data",
-      "patterns"
+      "Artificial Intelligence",
+      "data"
+     
     ],
     "max_marks": 10
   },
